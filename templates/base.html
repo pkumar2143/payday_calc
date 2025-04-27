@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <title>Payday Calculator</title>
+        <link rel="stylesheet" href={{ url_for('static', filename='css/app.css') }}>
+        {% block head %} {% endblock %}
+    </head>
+    
+    <body>
+        <h1>Payday Apportioner</h1>
+        <h4>Please enter your expenses for the month.</h4>
+        <ul>
+            <li>Expense Name: Any name you would like to call your expense (e.g. capital one, car loan, electric/gas)</li>
+            <li>Monthly amount: How much do you pay per month? (this calculator accounts for two pay period a month; 24 total per year.)</li>
+            <li>Mandatory: Is part of all of the expense mandatory? (e.g. a credit card may have a $50 minimum payment, but you pay $100.)</li>
+            <li>Amount mandatory: How much of the expense is mandatory? (e.g. for a credit card, the minimum payment is mandatory; anything extra is not.)</li>
+        </ul>
+
+        {% block body %} {% endblock %}
+    </body>
+
+</html>

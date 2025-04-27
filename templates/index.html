@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Payday Calculator</title>
+{% endblock %}
+    
+{% block body %}
+    
+    
+    <form id="myForm" action="/" method="POST">
+    <table class="entries">
+        <tr>
+          <th style="width:100px"></th>
+          <th style="width:165px">Expense Name</th>
+          <th style="width:165px">Monthly Amount</th>
+          <th style="width:100px">Mandatory?</th>
+          <th style="width:165px">Amount mandatory</th>
+        </tr>
+        {% for expense in expenses %}
+        <tr>
+          <td><a href=''>REMOVE</a></td>
+          <td>{{ expense.expense_name }}</td>
+          <td>{{ expense.monthly_amount }}</td>
+          <td>{{ expense.mandatory }}</td>
+          <td>{{ expense.amount_mandatory }}</td>
+          <td>{{ expense.date_created.date() }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td><a href=''>REMOVE</a></td>
+            <td><input type="text" name="expense_name" id="expense_name"></td>
+            <td><input type="text" name="monthly_amount" id="monthly_amount"></td>
+            <td><input type="checkbox" name="mandatory1" id="mandatory1"></td>
+            <td><input type="text" name="amount_mandatory" id="amount_mandatory"></td>
+        </tr>
+    </table>
+
+    <input type="hidden" name="mandatory" id="mandatory" value="0">
+
+    <script>
+        const form = document.getElementById('myForm');
+        const checkbox = document.getElementById('mandatory1');
+        const hiddenInput = document.getElementById('mandatory');
+      
+        form.addEventListener('submit', (event) => {
+          if (!checkbox.checked) {
+            hiddenInput.value = "0";
+          } else {
+             hiddenInput.value = "1";
+          }
+        });
+      </script>
+    <input style="margin-top: 10px;" type="submit" value="Add Expense">
+    </form>
+
+    <!--
+      <form action="/" method="POST">
+        <input type="text" name="expense_name" id="expense_name">
+        <input type="text" name="monthly_amount" id="monthly_amount">
+        <input type="checkbox" name="mandatory" id="mandatory">
+        <input type="text" name="amount_mandatory" id="amount_mandatory">
+        <input type="submit" value="Add Expense">
+      </form>
+    -->
+{% endblock %}

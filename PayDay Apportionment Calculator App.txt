@@ -1,0 +1,15 @@
+PayDay Apportionment Calculator App
+
+Enter your current bank balance (or grab it somehow).
+Enter (pre-load) monthly bills and desired apportionments.
+Indicate which apportionments are mandatory and which are not.
+
+Computation:
+	- Include "real" month data, different number of pay periods.
+	- When are certain bills due (though
+
+Output:
+	- How much money will be allotted.
+	- How much money CAN be used for other purposes (e.g. fun, sudden expenses)
+	- How much will be leftover
+

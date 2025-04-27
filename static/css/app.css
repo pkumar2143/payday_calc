@@ -1,0 +1,20 @@
+title {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+table.entries, td.entries, th {
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+}
+
+table.instructions, td.instructions, th.instructions {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form {
+    text-align: center;
+}
