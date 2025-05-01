@@ -6,9 +6,13 @@ def leftover(current_balance=0, expense_list=[0]):
     and mandatory bills.
 
     In:
-        current_balance (float): current checking balance.
-        expense_list (list of floats): list of upcoming/mandatory bill amounts.
+        - current_balance (float): current checking balance.
+        - expense_list (list of floats): list of upcoming/mandatory bill amounts.
+
+    Out:
+        - current_balance (float): After subtracting all expense values from expense_list
     '''
+    
     if ( len(expense_list) < 1 ) or ( expense_list == None ):
         raise ValueError("You must enter at least one value")
     
@@ -24,6 +28,14 @@ def leftover(current_balance=0, expense_list=[0]):
     return current_balance
 
 def dummy_check(expense_value):
+    '''
+    Purpose: Basic checks for expense values, 
+    making sure they exist and are not negative.
+
+    In: expense_value (float), monetary value to check
+    Out: Error messages depending on the check.
+    '''
+
     if expense_value < 0:
         raise ValueError("Expense cannot be negative.")
     
