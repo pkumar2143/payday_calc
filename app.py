@@ -10,7 +10,7 @@ class Todo(db.Model):
     expense_name     = db.Column(db.String, primary_key=True)
     monthly_amount   = db.Column(db.Float, nullable=False)
     mandatory        = db.Column(db.String, nullable=False) # Would like to make Bool...
-    amount_mandatory = db.Column(db.Float, nullable=False) # Want to make this optional in case the expense is NOT mandatory.
+    amount_mandatory = db.Column(db.Float, nullable=False)  # Want to make this optional in case the expense is NOT mandatory.
     date_created     = db.Column(db.DateTime, default=datetime.now(timezone.utc))
 
     def __repr__(self):
