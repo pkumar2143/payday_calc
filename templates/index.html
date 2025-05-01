@@ -15,10 +15,11 @@
           <th style="width:165px">Monthly Amount</th>
           <th style="width:100px">Mandatory?</th>
           <th style="width:165px">Amount mandatory</th>
+          <th style="width:165px">Date Created</th>
         </tr>
         {% for expense in expenses %}
         <tr>
-          <td><a href=''>REMOVE</a></td>
+          <td><a href='/delete/{{expense.expense_name}}'>REMOVE</a></td>
           <td>{{ expense.expense_name }}</td>
           <td>{{ expense.monthly_amount }}</td>
           <td>{{ expense.mandatory }}</td>
@@ -27,7 +28,7 @@
         </tr>
         {% endfor %}
         <tr>
-            <td><a href=''>REMOVE</a></td>
+            <td></td>
             <td><input type="text" name="expense_name" id="expense_name"></td>
             <td><input type="text" name="monthly_amount" id="monthly_amount"></td>
             <td><input type="checkbox" name="mandatory1" id="mandatory1"></td>

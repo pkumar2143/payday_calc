@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///payday1.db'
-db = SQLAlchemy(app)
+db = SQLAlchemy(app) # Need a way to initialize a db automatically... perhaps within this scrip...
 
 class Todo(db.Model):
     expense_name     = db.Column(db.String, primary_key=True)
@@ -39,8 +39,8 @@ def index():
         return render_template("index.html", expenses=expenses)
 
 @app.route('/delete/<string:expense_name>')
-def delete(expense_id):
-    expense_to_delete = Todo.query.get_or_404(expense_id)
+def delete(expense_name):
+    expense_to_delete = Todo.query.get_or_404(expense_name)
 
     try:
         db.session.delete(expense_to_delete)
