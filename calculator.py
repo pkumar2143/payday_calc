@@ -41,3 +41,6 @@ def dummy_check(expense_value):
     
     if expense_value == None or expense_value == '':
         raise ValueError("No balance or expenses listed.")
+    
+    if ( not isinstance(expense_value, float) ) or ( not isinstance(expense_value, int) ):
+        raise TypeError("Expense value must be a float or int.")
