@@ -1,6 +1,6 @@
 
 
-def leftover(current_balance=0, expense_list=[0]):
+def leftover(current_balance=0, expense_list=[0], desired_remaining=0):
     '''
     Purpose: Compute user's leftover balance after accounting for their upcoming
     and mandatory bills.
@@ -18,6 +18,11 @@ def leftover(current_balance=0, expense_list=[0]):
         dummy_check(expense_value=expense)
         current_balance -= expense
 
+    if desired_remaining > current_balance:
+        print("Your current_balance is less than your desired remaining balance. Check your expenditures.")
+    else:
+        current_balance -= desired_remaining
+
     return current_balance
 
 def mandatory(current_expenses=[0], mandatory_amounts=[0]):
@@ -31,6 +36,7 @@ def mandatory(current_expenses=[0], mandatory_amounts=[0]):
 
     Out: final_non_mandatory_amt (float): amount of money that is non-mandatory/extra.
 
+    ***Note: To be used to create a table of 'extra' allocation.
     '''
     # initial check: make sure each list has matching lengths
     if len(current_expenses) != len(mandatory_amounts):
