@@ -12,14 +12,8 @@ def leftover(current_balance=0, expense_list=[0]):
     Out:
         - current_balance (float): After subtracting all expense values from expense_list
     '''
-    
-    if ( len(expense_list) < 1 ) or ( expense_list == None ):
-        raise ValueError("You must enter at least one value")
-    
-    if ( not isinstance(expense_list, list) ):
-        raise TypeError("Expense must be a list.")
 
-    dummy_check(current_balance)
+    dummy_check(expense_value=current_balance, expense_list=expense_list)
 
     for expense in expense_list:
         dummy_check(expense_value=expense)
@@ -27,7 +21,9 @@ def leftover(current_balance=0, expense_list=[0]):
 
     return current_balance
 
-def dummy_check(expense_value):
+
+
+def dummy_check(expense_value, expense_list):
     '''
     Purpose: Basic checks for expense values, 
     making sure they exist and are not negative.
@@ -44,3 +40,9 @@ def dummy_check(expense_value):
     
     if ( not isinstance(expense_value, float) ) or ( not isinstance(expense_value, int) ):
         raise TypeError("Expense value must be a float or int.")
+    
+    if ( len(expense_list) < 1 ) or ( expense_list == None ):
+        raise ValueError("You must enter at least one value")
+    
+    if ( not isinstance(expense_list, list) ):
+        raise TypeError("Expense must be a list.")
