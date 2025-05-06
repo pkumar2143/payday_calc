@@ -19,12 +19,13 @@ class Todo(db.Model):
 @app.route('/', methods=['POST', 'GET'])
 def index():
     if request.method == 'POST':
-        expense_name = request.form['expense_name']
-        monthly_amount = request.form['monthly_amount']
-        mandatory = request.form['mandatory']
+        expense_name     = request.form['expense_name']
+        monthly_amount   = request.form['monthly_amount']
+        mandatory        = request.form['mandatory']
         amount_mandatory = request.form['amount_mandatory']
         #return mandatory
-        new_expense = Todo(expense_name=expense_name, monthly_amount=monthly_amount, mandatory=mandatory, amount_mandatory=amount_mandatory)
+        new_expense = Todo(expense_name=expense_name, monthly_amount=monthly_amount, 
+                           mandatory=mandatory, amount_mandatory=amount_mandatory)
 
         try:
             db.session.add(new_expense)

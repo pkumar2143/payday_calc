@@ -78,3 +78,8 @@ except TypeError as e:
 
 print("hello")
 
+################### Testing: 'mandatory' method
+
+cur_expenses = [100, 500, 450, 1001]
+mand_amts    = [45, 251, 450, 800]
+print(f"Potential Extra Amount = ${mandatory(current_expenses=cur_expenses, mandatory_amounts=mand_amts):.2f}")
