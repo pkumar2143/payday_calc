@@ -10,11 +10,12 @@ table.entries, td.entries, th {
     border: 1px solid black;
 }
 
-table.instructions, td.instructions, th.instructions {
-    margin-left: auto;
-    margin-right: auto;
-}
-
 form {
     text-align: center;
+}
+
+.current_bal {
+    margin-top: auto;
+    margin-bottom: 50px;
+    margin: 10px
 }

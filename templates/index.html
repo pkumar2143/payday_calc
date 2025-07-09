@@ -8,6 +8,9 @@
     
     
     <form id="myForm" action="/" method="POST">
+    <div class="current_bal" id="current_bal" name="current_bal">
+    Enter your current checking balance: <input type="text" name="current_balance" id="current_balance">
+    </div>
     <table class="entries">
         <tr>
           <th style="width:100px"></th>
@@ -39,8 +42,8 @@
     <input type="hidden" name="mandatory" id="mandatory" value="0">
 
     <script>
-        const form = document.getElementById('myForm');
-        const checkbox = document.getElementById('mandatory1');
+        const form        = document.getElementById('myForm');
+        const checkbox    = document.getElementById('mandatory1');
         const hiddenInput = document.getElementById('mandatory');
       
         form.addEventListener('submit', (event) => {

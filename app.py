@@ -7,6 +7,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///payday1.db'
 db = SQLAlchemy(app) # Need a way to initialize a db automatically... perhaps within this scrip...
 
 class Todo(db.Model):
+    
     expense_name     = db.Column(db.String, primary_key=True)
     monthly_amount   = db.Column(db.Float, nullable=False)
     mandatory        = db.Column(db.String, nullable=False) # Would like to make Bool...
