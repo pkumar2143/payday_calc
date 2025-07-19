@@ -13,3 +13,7 @@ Output:
 	- How much money CAN be used for other purposes (e.g. fun, sudden expenses)
 	- How much will be leftover
 
+Questions to address:
+	+ How to save monthly bills so they can just be uploaded for computation with a new current_balance?
+	+ Using a separate current_balance field.
+	+ Can I have two different "submit" buttons doing two different things.

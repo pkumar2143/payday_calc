@@ -9,7 +9,8 @@
     
     <form id="myForm" action="/" method="POST">
     <div class="current_bal" id="current_bal" name="current_bal">
-    Enter your current checking balance: <input type="text" name="current_balance" id="current_balance">
+      Enter your current checking balance: 
+        <input type="text" name="current_balance" id="current_balance" value="0">
     </div>
     <table class="entries">
         <tr>
@@ -54,8 +55,14 @@
           }
         });
       </script>
+    <!--
+    <button style="margin-top: 10px;" name="submit" type="submit0" value="Add Expense" formaction="/">Add Expense</button>
+    <button style="margin-top: 10px;" name="submit" type="submit1" value="Compute" formaction="/compute/">Compute</button>
+    -->
     <input style="margin-top: 10px;" type="submit" value="Add Expense">
     </form>
+
+    <!-- h2> You have </h2 -->
 
     <!--
       <form action="/" method="POST">
