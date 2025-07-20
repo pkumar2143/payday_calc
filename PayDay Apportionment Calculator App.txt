@@ -1,5 +1,9 @@
 PayDay Apportionment Calculator App
 
+Notes:
+ - Add user_name field to Expense table in payday.db.
+	+ Default to previous username...
+
 Enter your current bank balance (or grab it somehow).
 Enter (pre-load) monthly bills and desired apportionments.
 Indicate which apportionments are mandatory and which are not.
@@ -17,3 +21,5 @@ Questions to address:
 	+ How to save monthly bills so they can just be uploaded for computation with a new current_balance?
 	+ Using a separate current_balance field.
 	+ Can I have two different "submit" buttons doing two different things.
+
+
