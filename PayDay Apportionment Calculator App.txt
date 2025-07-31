@@ -1,8 +1,18 @@
 PayDay Apportionment Calculator App
 
 Notes:
- - Add user_name field to Expense table in payday.db.
+- Adding a new table containing user info, if we leave the user_name and current balance fields blank,
+then they are filled with default values in subsequent rows of the user table.
+- "Add Expense" button also adds a row to the User table
+- Add user_name field to Expense table in payday.db.
 	+ Default to previous username...
+
+Notes on Running the App/Initializing DB:
+ - Running app: python -m flask --app app run --debug
+ - Initializing db, use the following in a Python shell from inside project folder.
+	>>> from app import app, db
+	>>> app.app_context().push()
+	>>> db.create_all()
 
 Enter your current bank balance (or grab it somehow).
 Enter (pre-load) monthly bills and desired apportionments.
@@ -10,7 +20,7 @@ Indicate which apportionments are mandatory and which are not.
 
 Computation:
 	- Include "real" month data, different number of pay periods.
-	- When are certain bills due (though
+	- When are certain bills due (though...)
 
 Output:
 	- How much money will be allotted.
@@ -21,5 +31,4 @@ Questions to address:
 	+ How to save monthly bills so they can just be uploaded for computation with a new current_balance?
 	+ Using a separate current_balance field.
 	+ Can I have two different "submit" buttons doing two different things.
-
 

@@ -6,19 +6,25 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///payday.db'
 db = SQLAlchemy(app) # Need a way to initialize a db automatically... perhaps within this script...
 
+# Table for user info
 class User(db.Model):
-    user_name        = db.Column(db.String, nullable=False, primary_key=True, default='no_user')
+    user_name        = db.Column(db.String, nullable=False, primary_key=True, default='NU')
     current_balance  = db.Column(db.Float, nullable=False, default=-999999999.99)
 
+# Table for user's expense info
 class Expenses(db.Model):
     expense_name     = db.Column(db.String, primary_key=True)
     monthly_amount   = db.Column(db.Float, nullable=False)
     mandatory        = db.Column(db.String, nullable=False) # Would like to make Bool...
     amount_mandatory = db.Column(db.Float, nullable=False)  # Want to make this optional in case the expense is NOT mandatory.
     date_created     = db.Column(db.DateTime, default=datetime.now(timezone.utc))
+    user_name        = db.Column(db.String, nullable=False, default="NU")
 
     def __repr__(self):
         return f'<Expense {self.expense_name}, monthly amount = {self.monthly_amount}, mandatory expense = {self.mandatory}, amount_mandatory = {self.amount_mandatory}>'
+
+#with app.app_context():
+#    db.create_all()
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
@@ -33,7 +39,8 @@ def index():
         new_expense = Expenses(expense_name=expense_name, 
                                monthly_amount=monthly_amount, 
                                mandatory=mandatory, 
-                               amount_mandatory=amount_mandatory)
+                               amount_mandatory=amount_mandatory,
+                               user_name=user_name)
         
         new_user    = User(user_name=user_name,
                            current_balance=current_balance)
