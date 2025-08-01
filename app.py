@@ -3,6 +3,10 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timezone
 
 app = Flask(__name__)
+
+##################################
+##################################
+#### Initializing the DB #####
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///payday.db'
 db = SQLAlchemy(app) # Need a way to initialize a db automatically... perhaps within this script...
 
@@ -25,6 +29,9 @@ class Expenses(db.Model):
 
 #with app.app_context():
 #    db.create_all()
+
+#################################
+#################################
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
