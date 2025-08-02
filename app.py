@@ -39,6 +39,9 @@ class Expenses(db.Model):
 
 #################################
 #################################
+
+sys.exit(" ----- Fix primary_key issue first ----- \n Exiting program now...")
+
 @app.route('/', methods=['POST', 'GET'])
 def index():
     if request.method == 'POST':
