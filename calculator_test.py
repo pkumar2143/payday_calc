@@ -83,3 +83,11 @@ print("hello")
 cur_expenses = [100, 500, 450, 1001]
 mand_amts    = [45, 251, 450, 800]
 print(f"Potential Extra Amount = ${mandatory(current_expenses=cur_expenses, mandatory_amounts=mand_amts):.2f}")
+
+
+#################### Testing dummy_check
+print(f"Dummy Checking = {dummy_check(expense_value=100, expense_list=[0,1,2])}")
+
+for value in [1, "a", 100.0, "1.00"]:
+    print((not isinstance(value, float) ) and ( not isinstance(value, int) ))
+

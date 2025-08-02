@@ -15,7 +15,7 @@ def leftover(current_balance=0, expense_list=[0], desired_remaining=0):
     dummy_check(expense_value=current_balance, expense_list=expense_list)
 
     for expense in expense_list:
-        dummy_check(expense_value=expense)
+        dummy_check(expense_value=expense, expense_list=expense_list)
         current_balance -= expense
 
     if desired_remaining > current_balance:
@@ -54,6 +54,8 @@ def mandatory(current_expenses=[0], mandatory_amounts=[0]):
     
     return float(sum(extra_amounts_list))
 
+
+############### Kinda BUGGY ###################
 def dummy_check(expense_value, expense_list):
     '''
     Purpose: Basic checks for expense values, 
@@ -70,7 +72,7 @@ def dummy_check(expense_value, expense_list):
     if expense_value == None or expense_value == '':
         raise ValueError("No balance or expenses listed.")
     
-    if ( not isinstance(expense_value, float) ) or ( not isinstance(expense_value, int) ):
+    if ( not isinstance(expense_value, float) ) and ( not isinstance(expense_value, int) ):
         raise TypeError("Expense value must be a float or int.")
     
     # Expense List in "leftover"
@@ -79,3 +81,4 @@ def dummy_check(expense_value, expense_list):
     
     if ( not isinstance(expense_list, list) ):
         raise TypeError("Expense must be a list.")
+

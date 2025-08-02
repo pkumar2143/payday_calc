@@ -1,3 +1,4 @@
+import sys
 from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timezone
@@ -14,6 +15,12 @@ db = SQLAlchemy(app) # Need a way to initialize a db automatically... perhaps wi
 class User(db.Model):
     user_name        = db.Column(db.String, nullable=False, primary_key=True, default='NU')
     current_balance  = db.Column(db.Float, nullable=False, default=-999999999.99)
+    #"***don't run***"
+    ##########################################################################
+    ##########################################################################
+    # REMOVE primary_key AND REINITALIZE DB ... CANNOT ADD DUPLICATE USER INFO
+    ##########################################################################
+    ##########################################################################
 
 # Table for user's expense info
 class Expenses(db.Model):
@@ -32,7 +39,6 @@ class Expenses(db.Model):
 
 #################################
 #################################
-
 @app.route('/', methods=['POST', 'GET'])
 def index():
     if request.method == 'POST':
@@ -57,8 +63,8 @@ def index():
             db.session.add(new_user)
             db.session.commit()
             return redirect('/')
-        except:
-            return "There was an issue adding your expense"    
+        except Exception as e:
+            return f"There was an issue adding your expense: {e}" 
     else:
         expenses = Expenses.query.order_by(Expenses.date_created).all()
         return render_template("index.html", expenses=expenses)

@@ -10,25 +10,31 @@ sql_command = "SELECT * FROM expenses RIGHT JOIN user ON expenses.user_name = us
 
 cursor.execute(sql_command)
 rows = cursor.fetchall()
-for row in rows:
-    print(row)
-    username0 = row[5]        # NEED TO ENSURE USER FOR THE ENTRIES IS CONSISTENT...
-    current_balance = row[7]
-    
 
-# # Testing grabbing data & data selection
-# cursor.execute("SELECT * from expenses")
-# rows = cursor.fetchall()
+# First row will need to have user data.
+user_data_row = rows[0]
+user_current_balance = user_data_row[7]
+print(f"User's current balance = {user_current_balance}, type={type(user_current_balance)}")
+
+# Collect monthly bills amounts
+monthly_bills = [0]*len(rows)                  # pre-allotting space
+for i in range(len(monthly_bills)):
+    monthly_bills[i] = rows[i][1]              # bill amts are index-1 elements of each row
+    print(f"Type = {type(monthly_bills[i])}")
+
+print(f"Monthly bills = {type(monthly_bills)}")
+
+monthly_leftover = calculator.leftover(current_balance=user_current_balance, 
+                                       expense_list=monthly_bills)
+
+print(f"Amount leftover after all bills paid = {monthly_leftover}")
+
+
+###########################################
 # for row in rows:
 #     print(row)
-#     print(type(row))
-
-# print(f"monthly_amt: {rows[0][1]}")
-
-# example_balance = 1234.56
-# for row in rows:
-#     monthly_charge = row[1]
-#     example_balance -= monthly_charge
-#     print(f"Balance after charge {row[0]} in the amount of {monthly_charge:.2f} = {example_balance:.2f}")
-# # Need a way to involve user's balance, could create another table containing USER and BALANCE
+#     username0 = row[5]             # NEED TO ENSURE USER FOR THE ENTRIES IS CONSISTENT...
+#     print(f"User = {username0}")
+#     current_balance = row[7]
+#     print(f"Current balance = {current_balance}")
 
