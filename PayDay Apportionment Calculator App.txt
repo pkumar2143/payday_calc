@@ -10,9 +10,9 @@ then they are filled with default values in subsequent rows of the user table.
 Notes on Running the App/Initializing DB:
  - Running app: python -m flask --app app run --debug
  - Initializing db, use the following in a Python shell from inside project folder.
-	>>> from app import app, db
-	>>> app.app_context().push()
-	>>> db.create_all()
+	from app import app, db
+	app.app_context().push()
+	db.create_all()
 
 Enter your current bank balance (or grab it somehow).
 Enter (pre-load) monthly bills and desired apportionments.

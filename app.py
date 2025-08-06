@@ -1,4 +1,3 @@
-import sys
 from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timezone
@@ -16,19 +15,15 @@ class User(db.Model):
     id               = db.Column(db.Integer, nullable=False, primary_key=True, index=True)
     user_name        = db.Column(db.String, nullable=False, default='0')
     current_balance  = db.Column(db.Float, nullable=False, default=-999999999.99)
-    #"***don't run***"
-    ##########################################################################
-    ##########################################################################
-    # REMOVE primary_key AND REINITALIZE DB ... CANNOT ADD DUPLICATE USER INFO
-    ##########################################################################
-    ##########################################################################
+
 
 # Table for user's expense info
 class Expenses(db.Model):
-    expense_name     = db.Column(db.String, primary_key=True)
-    monthly_amount   = db.Column(db.Float, nullable=False)
-    mandatory        = db.Column(db.String, nullable=False) # Would like to make Bool...
-    amount_mandatory = db.Column(db.Float, nullable=False)  # Want to make this optional in case the expense is NOT mandatory.
+    id               = db.Column(db.Integer, nullable=False, primary_key=True, index=True)
+    expense_name     = db.Column(db.String, nullable=False, default='AAA')
+    monthly_amount   = db.Column(db.Float, nullable=False, default=-99999.99)
+    mandatory        = db.Column(db.String, nullable=False, default='0') # Would like to make Bool...
+    amount_mandatory = db.Column(db.Float, nullable=False, default=-99999.99)  # Want to make this optional in case the expense is NOT mandatory.
     date_created     = db.Column(db.DateTime, default=datetime.now(timezone.utc))
     user_name        = db.Column(db.String, nullable=False, default="NU")
 
@@ -41,8 +36,6 @@ class Expenses(db.Model):
 #################################
 #################################
 
-#sys.exit(" ----- Fix primary_key issue first ----- \n Exiting program now...")
-
 @app.route('/', methods=['POST', 'GET'])
 def index():
     if request.method == 'POST':
@@ -52,6 +45,14 @@ def index():
         monthly_amount   = request.form['monthly_amount']
         mandatory        = request.form['mandatory']
         amount_mandatory = request.form['amount_mandatory']
+        
+        # To address empty fields
+        if expense_name == '':
+            expense_name = "XYZ"
+        if amount_mandatory == '':
+            amount_mandatory = 0
+        if monthly_amount == '':
+            monthly_amount = 0
 
         new_expense = Expenses(expense_name=expense_name, 
                                monthly_amount=monthly_amount, 
