@@ -13,7 +13,8 @@ db = SQLAlchemy(app) # Need a way to initialize a db automatically... perhaps wi
 
 # Table for user info
 class User(db.Model):
-    user_name        = db.Column(db.String, nullable=False, primary_key=True, default='NU')
+    id               = db.Column(db.Integer, nullable=False, primary_key=True, index=True)
+    user_name        = db.Column(db.String, nullable=False, default='0')
     current_balance  = db.Column(db.Float, nullable=False, default=-999999999.99)
     #"***don't run***"
     ##########################################################################
@@ -40,7 +41,7 @@ class Expenses(db.Model):
 #################################
 #################################
 
-sys.exit(" ----- Fix primary_key issue first ----- \n Exiting program now...")
+#sys.exit(" ----- Fix primary_key issue first ----- \n Exiting program now...")
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
