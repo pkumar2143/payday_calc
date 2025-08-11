@@ -28,7 +28,7 @@ class Expenses(db.Model):
     user_name        = db.Column(db.String, nullable=False, default="NU")
 
     def __repr__(self):
-        return f'<Expense {self.expense_name}, monthly amount = {self.monthly_amount}, mandatory expense = {self.mandatory}, amount_mandatory = {self.amount_mandatory}>'
+        return f'<id {self.id}, Expense {self.expense_name}, monthly amount = {self.monthly_amount}, mandatory expense = {self.mandatory}, amount_mandatory = {self.amount_mandatory}>'
 
 #with app.app_context():
 #    db.create_all()
@@ -74,9 +74,9 @@ def index():
         expenses = Expenses.query.order_by(Expenses.date_created).all()
         return render_template("index.html", expenses=expenses)
 
-@app.route('/delete/<string:expense_name>')
-def delete(expense_name):
-    expense_to_delete = Expenses.query.get_or_404(expense_name)
+@app.route('/delete/<int:id>')
+def delete(id):
+    expense_to_delete = Expenses.query.get_or_404(id)
 
     try:
         db.session.delete(expense_to_delete)

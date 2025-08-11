@@ -17,6 +17,7 @@
     <table class="entries">
         <tr>
           <th style="width:100px"></th>
+          <th style="width:25px">id</th>
           <th style="width:165px">Expense Name</th>
           <th style="width:165px">Monthly Amount</th>
           <th style="width:100px">Mandatory?</th>
@@ -25,7 +26,8 @@
         </tr>
         {% for expense in expenses %}
         <tr>
-          <td><a href='/delete/{{expense.expense_name}}'>REMOVE</a></td>
+          <td><a href='/delete/{{expense.id}}'>REMOVE</a></td>
+          <td>{{ expense.id }}</td>
           <td>{{ expense.expense_name }}</td>
           <td>{{ expense.monthly_amount }}</td>
           <td>{{ expense.mandatory }}</td>
@@ -34,6 +36,7 @@
         </tr>
         {% endfor %}
         <tr>
+            <td></td>
             <td></td>
             <td><input type="text" name="expense_name" id="expense_name"></td>
             <td><input type="text" name="monthly_amount" id="monthly_amount"></td>
