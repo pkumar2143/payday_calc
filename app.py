@@ -85,3 +85,12 @@ def delete(id):
     except:
         return "There was a problem deleting your expense."
 
+# Dev Tool
+@app.route('/clear_all', methods=['POST'])
+def clear_all():
+    try:
+        db.session.query(User).delete()
+        db.session.commit()
+    except:
+        return "Could not delete all User data"
+    return redirect('/')
