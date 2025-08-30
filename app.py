@@ -1,3 +1,5 @@
+#import sqlite3
+#import calculator
 from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timezone
@@ -90,7 +92,15 @@ def delete(id):
 def clear_all():
     try:
         db.session.query(User).delete()
+        db.session.query(Expenses).delete()
         db.session.commit()
     except:
         return "Could not delete all User data"
     return redirect('/')
+
+# Functionalized monthly leftover computation
+#@app.route('/compute', methods=['POST'])
+#def compute():
+#    try:
+
+
